@@ -84,7 +84,7 @@ instance Binary RippleAddress where
 	put (RippleAddress (Base58Address 0 value 20)) = do
 		let bytes = toBase 256 value
 		mapM_ putWord8 (replicate (20 - length bytes) 0 ++ bytes)
-	put _ = fail "RippleAddress account ID is always 0, length always 20"
+	put _ = error "RippleAddress account ID is always 0, length always 20"
 
 -- Version, payload, payload bytesize
 data Base58Address = Base58Address !Word8 !Integer !Int
